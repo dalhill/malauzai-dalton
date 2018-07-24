@@ -20,16 +20,23 @@ const getCustomer = (customerName, callback) => {
 };
 
 
-const createRequest = (customer, latitude, longitude) => {
-  const { name, key, type, language, output } = customer;
+const makeAxiosInstance = (customer, latitude, longitude, pagetoken) => {
+  const { key, type, language, customerName, output } = customer;
+  if (pagetoken) return axios.create({
+    baseURL: `https://maps.googleapis.com/maps/api/place/nearbysearch/output`,
+    params: {
+      key,
+      pagetoken
+    }
+  });
   return axios.create({
-    baseURL: `https://maps.googleapis.com/maps/api/place/nearbysearch/${output}`,
+    baseURL: `https://maps.googleapis.com/maps/api/place/nearbysearch/output`,
     params: {
       key,
       type,
       language,
-      name,
-      location: `${latitude},${longitude}`,
+      name: customerName,
+      location: `${30.2672},${97.7431}`,
       radius: 50000
     }
   })
@@ -37,6 +44,6 @@ const createRequest = (customer, latitude, longitude) => {
 
 
 module.exports = {
-  createRequest,
-  getCustomer
+  getCustomer,
+  makeAxiosInstance
 };
