@@ -23,6 +23,7 @@ provider:
 functions:
   app:
     handler: index.handler
+    port: 3000
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
