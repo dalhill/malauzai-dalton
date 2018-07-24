@@ -1,5 +1,8 @@
 service: malauzai-dalton
 
+plugins:
+  - serverless-offline
+
 custom:
   tableName: 'customers-table-${self:provider.stage}'
 
@@ -14,8 +17,8 @@ provider:
         - dynamoDB:GetItem
       Resource:
         - { "Fn::GetAtt": ["CustomersDynamoDBTable", "Arn" ] }
-    environment:
-      CUSTOMERS_TABLE: ${self:custom.tableName}
+  environment:
+    CUSTOMERS_TABLE: ${self:custom.tableName}
 
 functions:
   app:
@@ -35,7 +38,7 @@ resources:
         KeySchema:
           -
             AttributeName: customerName
-            KeyType: Hash
+            KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
