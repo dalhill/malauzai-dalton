@@ -2,7 +2,7 @@ const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
-const { getCustomer, createRequest } = require("./customers/utils");
+const { getCustomer, createRequest } = require("./utils");
 
 app.use(bodyParser.json({ strict: false }));
 
