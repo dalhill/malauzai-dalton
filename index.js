@@ -21,31 +21,24 @@ app.post("/", (req, res) => {
   getCustomer(req.body.customerName, (error, customer) => {
     if (error) {
       res.status(error.status).json({ error: error.message });
-    } else {
-      res.status(200).json({ customer });
+      return;
     }
+    const googleAPIRequest = createRequest(customer, req.body.latitude, req.body.longitude);
+    googleAPIRequest.get()
+      .then(response => {
+        if (customer.output === "xml") {
+          res.status(200);
+          res.type("text/xml");
+          res.send(response.data)
+        } else {
+          res.status(200).json({ results: response.data.results})
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).json({ error: "Something went wrong between the server and google's API."})
+      })
   })
-
-
-
-  // const params = {
-  //   TableName: CUSTOMERS_TABLE,
-  //   Key: {
-  //     customerName: req.body.customerName
-  //   }
-  // };
-//
-  // dynamoDB.get(params, (error, result) => {
-  //   if (error) {
-  //     console.log(error);
-  //     res.status(400).json({ error: "Could not get customer." });
-  //   } else if (result && result.Item) {
-  //     const customer = result.Item;
-  //     res.json({ customer });
-  //   } else {
-  //     res.status(404).json({ error: "Customer not found." })
-  //   }
-  // })
 });
 
 module.exports.handler = serverless(app);
