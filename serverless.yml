@@ -1,0 +1,42 @@
+service: malauzai-dalton
+
+custom:
+  tableName: 'customers-table-${self:provider.stage}'
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamoDB:GetItem
+      Resource:
+        - { "Fn::GetAtt": ["CustomersDynamoDBTable", "Arn" ] }
+    environment:
+      CUSTOMERS_TABLE: ${self:custom.tableName}
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+resources:
+  Resources:
+    CustomersDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: customerName
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: customerName
+            KeyType: Hash
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.tableName}
