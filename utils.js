@@ -1,7 +1,7 @@
 const axios = require("axios");
 const AWS = require("aws-sdk");
 const dynamoDB = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
-const CUSTOMERS_TABLE = process.env.CUSTOMERS_TABLE;
+const CUSTOMERS_TABLE = process.env.CUSTOMERS_TABLE ? process.env.CUSTOMERS_TABLE : "customers-table-dev";
 const { parseString } = require("xml2js");
 
 
