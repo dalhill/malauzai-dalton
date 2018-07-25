@@ -36,9 +36,9 @@ app.post("/", (req, res) => {
             if (customer.output === "xml") {
               res.status(200);
               const builder = new Builder();
-              res.send(builder.buildObject(results));
+              res.send(builder.buildObject({ root: { result: results } }));
             } else {
-              res.status(200).json({ results })
+              res.status(200).json({ results });
             }
           }
         })

@@ -2,12 +2,11 @@ const axios = require("axios");
 const AWS = require("aws-sdk");
 const dynamoDB = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 const CUSTOMERS_TABLE = process.env.CUSTOMERS_TABLE;
-const { parseString, Builder } = require("xml2js");
+const { parseString } = require("xml2js");
 
 
 const getCustomer = (customerName, callback) => {
   const params = { TableName: CUSTOMERS_TABLE, Key: { customerName } };
-
   dynamoDB.get(params, (error, result) => {
     if (error) {
       console.log(error);
@@ -59,7 +58,6 @@ const parseResponse = (response, output) => {
     newResults = response.data.results;
     next_page_token = response.data.next_page_token
   }
-  console.log(newResults);
   return { newResults, next_page_token }
 };
 
