@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PlaceSearchResponse>
+    <status>OK</status>
+    <result>
+        <name>Rhythmboat Cruises</name>
+        <vicinity>Pyrmont Bay Wharf Darling Dr, Sydney</vicinity>
+        <type>travel_agency</type>
+        <type>restaurant</type>
+        <type>food</type>
+        <type>establishment</type>
+        <geometry>
+            <location>
+                <lat>-33.8707750</lat>
+                <lng>151.1990250</lng>
+            </location>
+        </geometry>
+        <icon>http://maps.gstatic.com/mapfiles/place_api/icons/travel_agent-71.png</icon>
+        <place_id>ChIJyWEHuEmuEmsRm9hTkapTCrk</place_id>
+        <scope>GOOGLE</scope>
+        <alt_ids>
+            <place_id>D9iJyWEHuEmuEmsRm9hTkapTCrk</place_id>
+            <scope>APP</scope>
+        </alt_ids>
+        <reference>CoQBdAAAAChhtoQX_467esHavS0Sj9DrY306W3_uDXKmB2us8Eh7_dX7rDuln18i_uqocF_LmzRptuFr6WZs7aeBSLFq8VFmckxFjsXDaqMdd3gvxi_5dIwPTEugQQYG9oJA-YnYfPBvjGtuoMfNnjyU2GuxGRmJjCO77pEAbsTLq44eBG5jEhAvkKHCGqIzqgC9tdOb1dSqGhRA1hhG4pvILD5OEAq6W8L8sXbkug</reference>
+        <id>21a0b251c9b8392186142c798263e289fe45b4aa</id>
+        <opening_hours>
+            <open_now>true</open_now>
+        </opening_hours>
+        <photo>
+            <photo_reference>CnRnAAAAiRA8ls6lx5LTfLuHJtLYvz73LXIMa5EVsHz2OUjh70LBPBnIEULZ57w076gOuyCeJqP041_v-ek3I5C4IkqW7YgA0EBybwywfIcUXsj5W_qiJR2yaXHXI-FmDM6j1zaS0sJQnNJhe4Bl9W42Jx16phIQRmNOWKGIemKLgzNEPcCnmBoUGgr0gWQBwWd8HAseR-5ie3JYuIM</photo_reference>
+            <width>519</width>
+            <height>270</height>
+        </photo>
+    </result>
+    <result>
+        <name>Private Charter Sydney Habour Cruise</name>
+        <vicinity>Australia</vicinity>
+        <type>restaurant</type>
+        <type>food</type>
+        <type>establishment</type>
+        <geometry>
+            <location>
+                <lat>-33.8668910</lat>
+                <lng>151.2008140</lng>
+            </location>
+        </geometry>
+        <icon>http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png</icon>
+        <place_id>ChIJqwS6fjiuEmsRJAMiOY9MSms</place_id>
+        <scope>GOOGLE</scope>
+        <reference>CpQBhQAAAKGKrbbnAW3_eAypKW9bhAzAuSmaqAogs7MTFxsntDqCzt-gKD9nz-zqNsk0uJsl0yCUYpNYjHz_yzmh3J_4TTxpxIqdaq2uDvfoTYtvm8FkxMAkK3cS7k9t3Ze2aHRWnxlN9hczK2xlc5taDE7xAGOHF5Xe5IlVV1wV66sOrWrlHtGh47lqT9Id86eG2OmlVhIQo4djLtRkceg-zaYjULYEjRoUToVEyOUVCFfZMUs_E7ZLSzjFmcg</reference>
+        <id>45a27fd8d56c56dc62afc9b49e1d850440d5c403</id>
+        <photo>
+            <photo_reference>CnRnAAAAUW97jpK2_C2Lh4jLPVKZlhyS84mqZxvVmWFdc6jdl3XxjzKbYdbJpz0PGW5eFRw6kTKYNZM9QvRf-csFegHILZxLCLJ-6ZnbdEXbVM4kBzOb-rhchJx1KC6LHs_vVWP8bK96569lFYRf7Hn8ylQrlhIQb69_dcZVwqQhREsHW6azWhoU0XMWqZMBBzx-hgpduAaeErOFg8E</photo_reference>
+            <width>640</width>
+            <height>426</height>
+        </photo>
+    </result>
+    <result>
+        <name>Bucks Party Cruise</name>
+        <vicinity>37 Bank St, Pyrmont</vicinity>
+        <type>restaurant</type>
+        <type>food</type>
+        <type>establishment</type>
+        <geometry>
+            <location>
+                <lat>-33.8709430</lat>
+                <lng>151.1903110</lng>
+            </location>
+        </geometry>
+        <icon>http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png</icon>
+        <place_id>ChIJLfySpTOuEmsRsc_JfJtljdc</place_id>
+        <scope>GOOGLE</scope>
+        <reference>CoQBdAAAAOMUoYamsekTDxBDVyKZ-E54VQ6HjirVzAZBBwz5gcn5KTfmemmwmOAtLcvRScp1NLQmj-fBYzEO2Gq_cO4Dc12PG0_twzDv9zq3KIyNQVuO-r0n1eQVj8Dlng-n4c1F2hMxufCNVp4-QfjMj81qXJm0invQMUc1xNgZRyiOpLe9EhDLn0KiVWEFKOURYsWrHRouGhR7YMJxYmFs-OXjKyzQKGdQXLrzPw</reference>
+        <id>30bee58f819b6c47bd24151802f25ecf11df8943</id>
+        <opening_hours>
+            <open_now>true</open_now>
+        </opening_hours>
+        <photo>
+            <photo_reference>CnRnAAAAjboYP9Ujxe5SmZFN5AJc42AWtpYFX9wYdqjcTXavXJlfoXdHPC2hErdbHcaeYJBNPV6CzoDc2RLw_w9HofGOhCWHtoAl9b3g8TZZjnZobnAHxoljUdgV8PXyd-pCO-QHKOtiKfIdUmF4HRj2QHj6OhIQhLNpoKNKP8MNjk90M4KGrhoUW2NyBgsWjRpUEoWlt0fD48BhEcQ</photo_reference>
+            <width>800</width>
+            <height>600</height>
+        </photo>
+    </result>
+    <result>
+        <name>Australian Cruise Group</name>
+        <vicinity>32 The Promenade, King Street Wharf 5, Sydney</vicinity>
+        <type>travel_agency</type>
+        <type>restaurant</type>
+        <type>food</type>
+        <type>establishment</type>
+        <geometry>
+            <location>
+                <lat>-33.8675910</lat>
+                <lng>151.2011960</lng>
+            </location>
+        </geometry>
+        <icon>http://maps.gstatic.com/mapfiles/place_api/icons/travel_agent-71.png</icon>
+        <place_id>ChIJrTLr-GyuEmsRBfy61i59si0</place_id>
+        <scope>GOOGLE</scope>
+        <reference>CoQBeAAAAJZA0WY2pKnZ6nNnxNd_pSDA2NilDLfGDf7pTt7VssxB5tMYE7400w3HZHRav2unpKRhEp7lrh0yKcVdSfKYIz85k1SExoLGmYD8NIf1dPr8KlkRWOYZUTLGp623r5hAzEGk94mPleF4s50pWqLrhAzwvJb1tGj2ak-2PXQORkeTEhAfTj6tMFo_tRWZYOnYCxiVGhQA3n-KV7AW5MvJlGaIDHuLyyEBBA</reference>
+        <id>a97f9fb468bcd26b68a23072a55af82d4b325e0d</id>
+        <opening_hours>
+            <open_now>true</open_now>
+        </opening_hours>
+        <photo>
+            <photo_reference>CnRnAAAAhTkpwozMoZx_NXMkIrKdcEGe46BmPy3GPCfS-gkCK5PlR8rFDY9DtD_7wFYAIdhVoZz3I9QguRNbil5y37jTU-03GJ_LqVw_avSxFkT0g2kU0K5z2VYnAsgNsrbsK_EVglhg5PrDybC1tAVKCXSGsRIQOcdlAVnC1Qc46YLWjlqdyxoUL5JGZgczfo1jxLxhDeGs8OvBQCk</photo_reference>
+            <width>200</width>
+            <height>242</height>
+        </photo>
+    </result>
+</PlaceSearchResponse>

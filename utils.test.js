@@ -1,4 +1,5 @@
-const { getCustomer, makeAxiosInstance } = require("./utils");
+const { readFile } = require("fs");
+const { getCustomer, makeAxiosInstance, parseResponse } = require("./utils");
 
 
 describe("Testing of the getCustomer function", () => {
@@ -44,5 +45,29 @@ describe("Testing of the makeAxiosInstance function", () => {
         pagetoken,
         key: '010101010101'
       });
+  })
+});
+
+
+describe("Testing of the parseResponse function", () => {
+  test("Extracts all results from JSON response.", done => {
+    const fileType = "json";
+    readFile(`./test_data/response.${fileType}`, (err, data) => {
+      const response = { data: JSON.parse(data.toString()) };
+      const { newResults, pagetoken } = parseResponse(response, fileType);
+      expect(newResults).toEqual(response.data.results);
+      expect(typeof pagetoken).toBe("undefined");
+      done();
+    })
+  });
+  test("Extracts all results form XML response.", done => {
+    const fileType = "xml";
+    readFile(`./test_data/response.${fileType}`, (err, data) => {
+      const response = { data: data.toString() };
+      const { newResults, pagetoken } = parseResponse(response, fileType);
+      expect(newResults.length).toEqual(4);
+      expect(typeof pagetoken).toBe("undefined");
+      done();
+    })
   })
 });
