@@ -1,4 +1,4 @@
-const { getCustomer } = require("./utils");
+const { getCustomer, makeAxiosInstance } = require("./utils");
 
 
 describe("Testing of the getCustomer function", () => {
@@ -13,5 +13,36 @@ describe("Testing of the getCustomer function", () => {
       expect(status).toBe(404);
       done();
     })
+  })
+});
+
+
+describe("Testing of the makeAxiosInstance function", () => {
+  const testCustomer = {
+    customerName: "Bob",
+    key: "010101010101",
+    type: "atm",
+    language: "pl",
+    output: "xml",
+    resultCount: 200
+  };
+  test("Desired axios instance when NO pagetoken is given.", () => {
+    expect(makeAxiosInstance(testCustomer, 20, 30).defaults.params).toEqual(
+      {
+        key: '010101010101',
+        type: 'atm',
+        language: 'pl',
+        name: "Bob",
+        location: '20,30',
+        radius: 50000
+      });
+  });
+  test("Desired axios instance when pagetoken is given.", () => {
+    const pagetoken = "02309845983475938475983";
+    expect(makeAxiosInstance(testCustomer, 20, 30, pagetoken).defaults.params).toEqual(
+      {
+        pagetoken,
+        key: '010101010101'
+      });
   })
 });
