@@ -2,7 +2,8 @@ const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
-const { getCustomer, makeAxiosInstance } = require("./utils");
+const { getCustomer, makeAxiosInstance, parseResponse } = require("./utils");
+const { Builder } = require("xml2js");
 
 app.use(bodyParser.json({ strict: false }));
 
@@ -25,11 +26,20 @@ app.post("/", (req, res) => {
     const request = (pagetoken) => {
       makeAxiosInstance(customer, req.body.latitude, req.body.longitude, pagetoken).get()
         .then(response => {
-          results = results.concat(response.data.results.slice(0, customer.resultCount - results.length));
-          if (typeof response.data.next_page_token !== "undefined" && results.length < customer.resultCount) {
-            setTimeout(() => { request(response.data.next_page_token) }, 2500);  // must wait at least 2 seconds for pagetoken activation (read google search docs)
+          const { newResults, next_page_token } = parseResponse(response, customer.output);
+          if (typeof newResults !== "undefined") {
+            results = results.concat(newResults.slice(0, customer.resultCount - results.length));
+          }
+          if (typeof next_page_token !== "undefined" && results.length < customer.resultCount) {
+            setTimeout(() => { request(next_page_token) }, 2500);  // must wait at least 2 seconds for pagetoken activation (read google search docs)
           } else {
-            res.status(200).json({ results })
+            if (customer.output === "xml") {
+              res.status(200);
+              const builder = new Builder();
+              res.send(builder.buildObject(results));
+            } else {
+              res.status(200).json({ results })
+            }
           }
         })
         .catch(err => {

@@ -2,6 +2,7 @@ const axios = require("axios");
 const AWS = require("aws-sdk");
 const dynamoDB = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 const CUSTOMERS_TABLE = process.env.CUSTOMERS_TABLE;
+const { parseString, Builder } = require("xml2js");
 
 
 const getCustomer = (customerName, callback) => {
@@ -22,28 +23,49 @@ const getCustomer = (customerName, callback) => {
 
 const makeAxiosInstance = (customer, latitude, longitude, pagetoken) => {
   const { key, type, language, customerName, output } = customer;
+  const baseURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/${output}`;
   if (pagetoken) return axios.create({
-    baseURL: `https://maps.googleapis.com/maps/api/place/nearbysearch/output`,
+    baseURL,
     params: {
       key,
       pagetoken
     }
   });
   return axios.create({
-    baseURL: `https://maps.googleapis.com/maps/api/place/nearbysearch/output`,
+    baseURL,
     params: {
       key,
       type,
       language,
       name: customerName,
-      location: `${30.2672},${97.7431}`,
+      location: `${latitude},${longitude}`,
       radius: 50000
     }
   })
 };
 
+const parseResponse = (response, output) => {
+  let newResults, next_page_token;
+  if (output === "xml") {
+    parseString(response.data, (err, res) => {
+      if (res.PlaceSearchResponse.status[0] !== "ZERO_RESULTS") {
+        newResults = res.PlaceSearchResponse.result;
+      }
+      if (typeof res.PlaceSearchResponse.next_page_token !== "undefined") {
+        next_page_token = res.PlaceSearchResponse.next_page_token[0];
+      }
+    });
+  } else {
+    newResults = response.data.results;
+    next_page_token = response.data.next_page_token
+  }
+  console.log(newResults);
+  return { newResults, next_page_token }
+};
+
 
 module.exports = {
   getCustomer,
-  makeAxiosInstance
+  makeAxiosInstance,
+  parseResponse
 };
